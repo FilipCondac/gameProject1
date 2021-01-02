@@ -261,8 +261,7 @@ function draw() {
 
 	//Draw player weapon
 	
-	playerWeapon();
-	
+
 	
 	// Draw collectable items
 
@@ -282,9 +281,10 @@ function draw() {
 
 	pop();
 
+	
 	// Draw game character.
 	drawGameChar();
-
+	playerWeapon();
 	//If the player dies, display a message allowing them to restart the game
 	fill(255);
 	stroke(0);
@@ -1370,15 +1370,15 @@ function checkDamage(t_enemy){
 
 function playerWeapon(){
 	
-	if(keyCode == 67){
+	if(keyCode == 67){	//When key is pressed
 		fill(255,255,0);
-		ellipse(weaponX, gameChar_y - 20, 20, 20);
-		weaponX += 10;
-		var distance = dist(gameChar_world_x, gameChar_y - 20, weaponX, floorPos_y - 20);
-		if(distance > 400){
-		weaponX = gameChar_world_x;
-		weaponX += 0;
-		keyCode = null;
+		ellipse(weaponX, gameChar_y - 20, 20, 20); // Draw ellipse
+		weaponX += 10;		//set ellipse to increment x by 10
+		var distance = dist( gameChar_x, gameChar_y - 20, weaponX, floorPos_y - 20); //Calculate distance between ellipse in order to return ellipse to player
+		if(distance > 400){ 
+		weaponX = gameChar_x; //reset ellipse pos
+		weaponX += 0; //set weapon speed back to 0
+		keyCode = null; //reset key code in order so the ellipse doesn't keep firing
 		}
 		
 	} 
